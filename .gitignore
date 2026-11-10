@@ -45,9 +45,10 @@ snapshot_live.jpg
 __pycache__/
 pytest-cache-files-*
 
-# Local desktop build output. Keep source/build instructions, not copied SDK DLLs.
-/HSArriver.exe
-/HSArriver.exe.config
-desktop/runtime/
+# 桌面可执行程序与运行依赖随仓库/部署包发布：
+# exe 依赖同目录的 .config，以及 desktop/runtime 下的 WebView2 SDK DLL。
+# WebView2.LICENSE.txt 需保留第三方许可证（上面的 *.txt 会命中，故反向豁免）。
+!desktop/runtime/WebView2.LICENSE.txt
+# 图标已在编译时嵌入 exe，构建源图不必入库
 desktop/assets/*.png
 desktop/assets/*.ico

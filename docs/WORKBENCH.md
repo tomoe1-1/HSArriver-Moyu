@@ -37,6 +37,6 @@ python -m unittest tests.test_web_workbench tests.test_surrender_frontend
 
 ## 设计与素材
 
-参考用户提供的 OASX 2.4.0 的青蓝中性表面、多栏工作台、分段监控标签与背景构图。
-图标按用户提供的黑色三旋、青蓝环图案手工制作 SVG；非原图逐像素复制。
-素材说明见 `web/assets/README.md`。OASX 原安装目录没有被修改。
+界面为本项目自带的青蓝中性表面、多栏工作台与分段监控标签；氛围背景是纯 CSS 渐变，
+不依赖任何外部图片素材。图标按黑色三旋、青蓝环图案手工制作 SVG。
+素材说明见 `web/assets/README.md`。

@@ -22,8 +22,7 @@ def build():
     if len(scripts) != 1:
         raise ValueError("Expected exactly one existing control script")
     controller = scripts[0]
-    asset = base64.b64encode((WEB / "assets" / "oasx-backdrop.webp").read_bytes())
-    css = css.replace("__OASX_BACKDROP__", "data:image/webp;base64," + asset.decode("ascii"))
+    # 氛围背景使用纯 CSS 渐变，不再内联任何外部图片素材。
     icon = base64.b64encode((WEB / "assets" / "brand-icon.svg").read_bytes()).decode("ascii")
     if shell.count("__BRAND_ICON__") != 4:
         raise ValueError("Expected favicon and three brand icon placements")

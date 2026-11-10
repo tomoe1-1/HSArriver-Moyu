@@ -1,4 +1,4 @@
-"""Offline checks for the self-contained OASX-style workbench bundle."""
+"""Offline checks for the self-contained HSArriver workbench bundle."""
 
 import re
 import shutil
@@ -62,7 +62,7 @@ class WorkbenchBundleTests(unittest.TestCase):
         images = [attrs for tag, attrs in self.markup.attrs if tag == "img"]
         self.assertEqual(len(images), 3)
         self.assertTrue(all(attrs["src"].startswith("data:image/svg+xml;base64,") for attrs in images))
-        self.assertIn("data:image/webp;base64,", self.html)
+        self.assertNotIn("data:image/webp;base64,", self.html)
 
     def test_no_external_runtime_dependencies(self):
         for tag, attrs in self.markup.attrs:
@@ -72,7 +72,7 @@ class WorkbenchBundleTests(unittest.TestCase):
                 self.assertTrue(attrs.get("href", "").startswith("data:"))
 
     def test_no_unexpanded_template_markers(self):
-        self.assertFalse(re.search(r"__(?:INLINE|CONTROL|WORKBENCH|OASX|BRAND)_[A-Z_]+__", self.html))
+        self.assertFalse(re.search(r"__(?:INLINE|CONTROL|WORKBENCH|BRAND)_[A-Z_]+__", self.html))
 
     def test_no_personal_absolute_paths_in_sources(self):
         for filename in ("workbench.html", "workbench.css", "workbench.js"):

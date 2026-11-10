@@ -2,7 +2,7 @@
 
 **双击项目根目录的 `HSArriver.exe` 即可。** 不需要浏览器、终端或 Node 服务。
 
-软件是 Windows x64 原生窗口 + WebView2；界面沿用 OASX 风格工作台和用户提供图案的图标。
+软件是 Windows x64 原生窗口 + WebView2；界面为 HSArriver Turbo 自带的工作台样式和品牌图标。
 启动时选择本项目的 Python 3.12 环境，直接启动后端并等待就绪事件，再载入内嵌界面。
 已有同项目后端时复用，不重复拉起。
 

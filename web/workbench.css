@@ -1,4 +1,4 @@
-/* OASX-inspired tinted surfaces, 8pt rhythm, and independent workbench panes. */
+/* HSArriver Turbo workbench: tinted surfaces, 8pt rhythm, independent panes. */
 :root {
   color-scheme: dark;
   --bg: #0d161c;
@@ -24,7 +24,7 @@
   --gold-bright: var(--accent);
   --radius: 12px;
   --shadow: 0 4px 20px rgba(0, 0, 0, .12);
-  --backdrop: url("__OASX_BACKDROP__");
+  --backdrop: linear-gradient(135deg, #16323d 0%, #0d161c 48%, #1c3a45 100%);
 }
 :root[data-theme="light"] {
   color-scheme: light;
