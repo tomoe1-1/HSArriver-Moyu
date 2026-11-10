@@ -4048,6 +4048,7 @@ def status_snapshot():
         "last_error": err,
         "last_summary": summary,
         "hotkey_ok": hotkey_ok,
+        "project_root": str(ROOT),
     }
 
 
@@ -4297,6 +4298,7 @@ def _write_port_file(port: int) -> None:
             "started_at": datetime.now().isoformat(timespec="seconds"),
             "token": _SERVE_TOKEN,
             "executable": sys.executable,
+            "root": str(ROOT),
         }
         tmp = PORT_FILE.with_name(PORT_FILE.name + ".tmp")
         tmp.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf8")
@@ -4343,7 +4345,7 @@ def _boot_resume_schedule():
         _log("WARN", "上次保存的定时任务已过期，已自动取消，请在页面重新设置。")
 
 
-def main():
+def main(desktop: bool = False):
     os.chdir(ROOT)
     # DPI 感知必须最先声明：未声明时 Windows 会把客户区几何按系统缩放虚拟化
     # （150% 下 1920×1080 报成 1280×720），而抓图是物理像素 —— 两者对不上会
@@ -4363,12 +4365,14 @@ def main():
     # 期间也能一键叫停正在点的动作。
     _register_hotkey()
     # 常驻前台守护线程：每 30 分钟把炉石切回最前台
-    threading.Thread(
-        target=_hearthstone_foreground_guard, name="hs-fg-guard", daemon=True
-    ).start()
+    if not desktop:
+        threading.Thread(
+            target=_hearthstone_foreground_guard, name="hs-fg-guard", daemon=True
+        ).start()
     cfg = load_config()
     _apply_constants(cfg.get("name") or "", cfg.get("log_root") or "")
-    _boot_resume_schedule()
+    if not desktop:
+        _boot_resume_schedule()
     # 启动即自检：Python 版本 / 依赖包 / 分辨率和缩放（结果进日志与页面）。
     start_selfcheck_async()
     # 线上最新版本号：后台线程每 6 小时查一次（断网只显示“获取失败”，不影响运行）。
@@ -4397,7 +4401,7 @@ def main():
     print("      建议以管理员身份重新运行本程序。")
     print("  随时按 Ctrl+Q 急停（自动化 / 手动进对战都停）；关闭本窗口即退出控制台。")
     print("=" * 64)
-    if "--no-browser" not in sys.argv:
+    if not desktop and "--no-browser" not in sys.argv:
         threading.Timer(0.8, lambda: webbrowser.open(url)).start()
     try:
         while True:
@@ -4409,4 +4413,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(desktop="--desktop" in sys.argv)

@@ -1,3 +1,24 @@
+> ## 📌 公开库出处（来源声明）
+>
+> 本仓库 **「炉石传说摸鱼助手」** 是下列公开开源项目的**衍生版本**，并非原作：
+>
+> | 项目 | 内容 |
+> | --- | --- |
+> | 上游公开库 | <https://github.com/Donald-Yip/HSArriver-Turbo> |
+> | 原项目名称 | **HSLegendArriver** |
+> | 原作者 | Donald-Yip |
+> | 上游版本 | v2026.10.24（commit `53919aa`） |
+> | 许可证 | **GNU General Public License v3.0**，全文见 [LICENSE](LICENSE) |
+>
+> 本仓库沿用 **GPL-3.0** 继续开源，完整保留上游许可证全文与版权声明。
+> 在上游基础上新增了桌面端外壳（`desktop/`）、Web 工作台（`web/workbench.*`）、
+> `web_ui.py` / `web/index.html` 等改动，具体改动以 Git 提交记录为准。
+> 依据 GPL-3.0 第 5 条，衍生作品须同样以 GPL-3.0 发布、标明修改并保留原版权声明。
+>
+> 原作者与本仓库维护者无关；本项目仅供学习研究，使用游戏自动化脚本的风险由使用者自行承担。
+
+---
+
 <div align="center">
 
 # 🏆 HSLegendArriver（胜率 63.8 的炉石传说脚本）

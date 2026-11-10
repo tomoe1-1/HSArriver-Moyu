@@ -44,3 +44,10 @@ out.jpg
 snapshot_live.jpg
 __pycache__/
 pytest-cache-files-*
+
+# Local desktop build output. Keep source/build instructions, not copied SDK DLLs.
+/HSArriver.exe
+/HSArriver.exe.config
+desktop/runtime/
+desktop/assets/*.png
+desktop/assets/*.ico
